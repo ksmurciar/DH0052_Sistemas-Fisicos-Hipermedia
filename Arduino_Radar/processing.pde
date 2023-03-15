@@ -1,4 +1,5 @@
 import processing.serial.*; // imports library for serial communication
+
 import java.awt.event.KeyEvent; // imports library for reading the data from the serial port
 import java.io.IOException;
 Serial myPort; // defines Object Serial
@@ -16,7 +17,7 @@ void setup() {
   
  size (1200, 700); // ***CHANGE THIS TO YOUR SCREEN RESOLUTION***
  smooth();
- String portName = Serial.list()[1]; //change the 0 to a 1 or 2 etc. to match your port
+ String portName = Serial.list()[3]; //change the 0 to a 1 or 2 etc. to match your port
  myPort = new Serial(this, portName, 9600);
  myPort.bufferUntil('.'); // reads the data from the serial port up to the character '.'. So actually it reads this: angle,distance.
 }
@@ -110,11 +111,11 @@ void drawText() { // draws the texts on the screen
   text("30cm",width-width*0.177,height-height*0.0833);
   text("40cm",width-width*0.0729,height-height*0.0833);
   textSize(40);
-  text("Vicky's Radar", width-width*0.800, height-height*0.0200);
+  text("Radar", width-width*0.800, height-height*0.0200);
   text("Angle: " + iAngle +" °", width-width*0.48, height-height*0.0277);
-  text("Distance: ", width-width*0.26, height-height*0.0277);
+  //text("Distance: ", width-width*0.26, height-height*0.0277);
   if(iDistance<40) {
-  text("        " + iDistance +" cm", width-width*0.225, height-height*0.0277);
+  text("" + iDistance +" cm", width-width*0.225, height-height*0.0277);
   }
   textSize(25);
   fill(98,245,60);
